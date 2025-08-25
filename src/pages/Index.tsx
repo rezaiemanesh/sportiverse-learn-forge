@@ -1,37 +1,12 @@
-
-import React, { useState, useEffect } from 'react';
-import Header from '../components/Layout/Header';
-import AnimatedHero from '../components/Hero/AnimatedHero';
-import UserDashboard from '../components/Dashboard/UserDashboard';
-import LoadingScreen from '../components/Loading/LoadingScreen';
-import { useAuth } from '../hooks/useAuth';
+// Update this page (the content is just a fallback if you fail to update the page)
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const { user } = useAuth();
-
-  useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
-
   return (
-    <div className="min-h-screen">
-      <Header userRole={user?.role || null} />
-      
-      {user ? (
-        <UserDashboard userRole={user.role} userName={user.name} />
-      ) : (
-        <AnimatedHero />
-      )}
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
+        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+      </div>
     </div>
   );
 };
